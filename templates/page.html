@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$title$</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<nav>
+  <a href="/">блог</a>
+  <a href="/instruments.html">инструменты</a>
+</nav>
+$if(date)$
+<h1>$title$</h1>
+<p class="post-meta">$date$</p>
+$endif$
+$body$
+<footer>
+  safonoff
+</footer>
+</body>
+</html>
