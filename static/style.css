@@ -143,6 +143,13 @@ h4:hover .heading-link {
   color: var(--accent);
 }
 
+blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--accent);
+}
+
 p, ul, ol {
   margin-bottom: 1rem;
 }
