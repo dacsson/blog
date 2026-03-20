@@ -28,7 +28,7 @@ $body$
   safonoff · <a href="mailto:sda20036@gmail.com">почта</a>
 </footer>
 <script>
-document.querySelectorAll("h1[id],h2[id],h3[id],h4[id]").forEach(h => {
+document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id]").forEach(h => {
   const a = document.createElement("a");
   a.href = "#" + h.id;
   a.className = "heading-link";
@@ -37,7 +37,7 @@ document.querySelectorAll("h1[id],h2[id],h3[id],h4[id]").forEach(h => {
 });
 
 const toc = document.getElementById("toc");
-const headings = document.querySelectorAll("main h2[id], main h3[id]");
+const headings = document.querySelectorAll("main h2[id], main h3[id], main h4[id]");
 if (headings.length > 1) {
   const title = document.createElement("strong");
   title.textContent = "Оглавление";
@@ -45,7 +45,7 @@ if (headings.length > 1) {
   const ul = document.createElement("ul");
   headings.forEach(h => {
     const li = document.createElement("li");
-    li.className = h.tagName === "H3" ? "toc-h3" : "";
+    li.className = h.tagName === "H3" ? "toc-h3" : h.tagName === "H4" ? "toc-h4" : "";
     const a = document.createElement("a");
     a.href = "#" + h.id;
     a.textContent = h.childNodes[0].textContent;

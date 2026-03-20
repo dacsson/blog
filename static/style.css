@@ -76,6 +76,10 @@ main {
   padding-left: 0.8rem;
 }
 
+.toc .toc-h4 {
+  padding-left: 1.0rem;
+}
+
 .toc a {
   text-decoration: none;
   color: var(--accent);
