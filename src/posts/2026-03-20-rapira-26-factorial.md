@@ -144,6 +144,49 @@ date: 2026-03-19
 
 **Теперь можно официально окрестить язык живым, я полагаю?**
 
+Одна из целей - это компилировать в **читаемый** Си код, судите конечно сами, вот вам пример во что компилируется программа выше:
+```c
+#include "runtime.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// функ ФАКТОРИАЛ
+RAP_Object *RAP_FUNC_FAKTORIAL(struct RAP_CallFrame *_frame,
+                               RAP_Object **_args, unsigned int _argc) {
+  RAP_Object *_local_N = _args[0];
+
+  RAP_Object *_t0 = RAP_create_int_obj(2);
+  RAP_Object *_t1 = RAP_less_than(_local_N, _t0);
+  if (_t1->logical_val) {
+    RAP_Object *_t2 = RAP_create_int_obj(1);
+    return _t2;
+  } else {
+    RAP_Parameter *_p0 = RAP_create_parameter(RAP_PARAMETER_MODE_IN, "Н");
+    RAP_Object *_t3 = RAP_create_callable_obj(_frame, &RAP_FUNC_FAKTORIAL, &_p0, 1);
+    RAP_Object *_t4 = RAP_create_int_obj(1);
+    RAP_Object *_t5 = RAP_subtract(_local_N, _t4);
+    RAP_Object *_t6 = RAP_call_callable_obj(_t3, &_t5, 1);
+    RAP_Object *_t7 = RAP_multiply(_local_N, _t6);
+    return _t7;
+  }
+}
+
+int main(void) {
+  struct RAP_CallFrame _main_frame = {NULL, NULL, 0};
+
+  RAP_Parameter *_p1 = RAP_create_parameter(RAP_PARAMETER_MODE_IN, "Н");
+  RAP_Object *_t0 = RAP_create_callable_obj(&_main_frame, &RAP_FUNC_FAKTORIAL, &_p1, 1);
+  RAP_Object *_t1 = RAP_create_int_obj(5);
+  RAP_Object *_t2 = RAP_call_callable_obj(_t0, &_t1, 1);
+  char *_s0 = RAP_stringify_object(_t2);
+  printf("%s", _s0);
+  printf("\n");
+  return 0;
+}
+```
+
 ### Фаза 2 
 
 По большей части свои идеи я оставил на момент когда будет готова **Фаза 1**. Предварительно хочется конечно воспользоваться характером языка - **динамическая типизация**, **простота синтаксиса**. 
