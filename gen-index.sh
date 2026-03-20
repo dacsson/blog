@@ -13,6 +13,6 @@ for f in $(ls -r src/posts/*.md 2>/dev/null); do
   title=$(sed -n 's/^title: *//p' "$f" | head -1)
   date=$(sed -n 's/^date: *//p' "$f" | head -1)
   slug=$(basename "$f" .md)
-  echo "<li><span class=\"post-date\">${date}</span> <a href=\"/blog/posts/${slug}.html\">${title}</a></li>"
+  echo "<li><span class=\"post-date\">${date}</span> <a href=\"${BASE}/posts/${slug}.html\">${title}</a></li>"
 done
 echo '</ul>'

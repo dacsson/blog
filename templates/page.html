@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>$title$</title>
-  <link rel="stylesheet" href="/blog/style.css">
+  <link rel="stylesheet" href="$base$/style.css">
 </head>
 <body>
 <nav>
-  <a href="/blog/">блог</a>
-  <a href="/blog/instruments.html">инструменты</a>
+  <a href="$base$/">блог</a>
+  <a href="$base$/instruments.html">инструменты</a>
 </nav>
 $if(date)$
 <h1>$title$</h1>
@@ -19,5 +19,14 @@ $body$
 <footer>
   safonoff
 </footer>
+<script>
+document.querySelectorAll("h1[id],h2[id],h3[id],h4[id]").forEach(h => {
+  const a = document.createElement("a");
+  a.href = "#" + h.id;
+  a.className = "heading-link";
+  a.textContent = "#";
+  h.appendChild(a);
+});
+</script>
 </body>
 </html>

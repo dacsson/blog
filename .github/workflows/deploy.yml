@@ -23,7 +23,7 @@ jobs:
         run: sudo apt-get install -y pandoc
 
       - name: Build
-        run: make all
+        run: make all BASE=/blog
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

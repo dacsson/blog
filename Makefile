@@ -1,6 +1,8 @@
+BASE ?=
 POSTS_SRC := $(sort $(wildcard src/posts/*.md))
 POSTS_HTML := $(patsubst src/posts/%.md,public/posts/%.html,$(POSTS_SRC))
 TEMPLATE := templates/page.html
+PANDOC_BASE := -M base="$(BASE)"
 
 .PHONY: all clean serve
 
@@ -12,15 +14,15 @@ public/style.css: static/style.css
 
 public/posts/%.html: src/posts/%.md $(TEMPLATE)
 	@mkdir -p public/posts
-	pandoc --template=$(TEMPLATE) -o $@ $<
+	pandoc --template=$(TEMPLATE) $(PANDOC_BASE) -o $@ $<
 
 public/instruments.html: src/instruments.md $(TEMPLATE)
 	@mkdir -p public
-	pandoc --template=$(TEMPLATE) -o $@ $<
+	pandoc --template=$(TEMPLATE) $(PANDOC_BASE) -o $@ $<
 
 public/index.html: $(TEMPLATE) $(POSTS_SRC) gen-index.sh
 	@mkdir -p public
-	./gen-index.sh | pandoc --template=$(TEMPLATE) -M title="safonoff" -o $@ -
+	BASE="$(BASE)" ./gen-index.sh | pandoc --template=$(TEMPLATE) $(PANDOC_BASE) -M title="safonoff" -o $@ -
 
 clean:
 	rm -rf public
