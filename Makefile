@@ -2,7 +2,7 @@ BASE ?=
 POSTS_SRC := $(sort $(wildcard src/posts/*.md))
 POSTS_HTML := $(patsubst src/posts/%.md,public/posts/%.html,$(POSTS_SRC))
 TEMPLATE := templates/page.html
-PANDOC_BASE := -M base="$(BASE)"
+PANDOC_BASE := -M base="$(BASE)" --highlight-style=zenburn
 
 .PHONY: all clean serve
 

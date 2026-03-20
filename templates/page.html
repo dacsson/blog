@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>$title$</title>
   <link rel="stylesheet" href="$base$/style.css">
+$if(highlighting-css)$
+  <style>$highlighting-css$</style>
+$endif$
 </head>
 <body>
 <nav>
@@ -14,15 +17,15 @@
 <div class="page">
   <aside class="toc" id="toc"></aside>
   <main>
-    $if(date)$
-    <h1>$title$</h1>
-    <p class="post-meta">$date$</p>
-    $endif$
-    $body$
+$if(date)$
+<h1>$title$</h1>
+<p class="post-meta">$date$</p>
+$endif$
+$body$
   </main>
 </div>
 <footer>
-  safonoff
+  safonoff · <a href="mailto:sda20036@gmail.com">почта</a>
 </footer>
 <script>
 document.querySelectorAll("h1[id],h2[id],h3[id],h4[id]").forEach(h => {
