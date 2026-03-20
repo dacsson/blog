@@ -144,7 +144,7 @@ date: 2026-03-19
 
 **Теперь можно официально окрестить язык живым, я полагаю?**
 
-Одна из целей - это компилировать в **читаемый** Си код, судите конечно сами, вот вам пример во что компилируется программа выше:
+Одна из целей - это компилировать в **читаемый** Си код, судите конечно сами, вот вам пример во что компилируется программа выше (реальный вывод компилятора):
 ```c
 #include "runtime.h"
 #include <math.h>
@@ -186,6 +186,35 @@ int main(void) {
   return 0;
 }
 ```
+
+Думаю идея устройства `runtime` компилятора понятно из сниппета выше, и она довольно простая, _всё - это объект_:
+```c
+typedef enum {
+  RAP_OBJECT_TAG_NULL,
+  RAP_OBJECT_TAG_LOGICAL,
+  RAP_OBJECT_TAG_CALLABLE, // unifies proc and func
+  RAP_OBJECT_TAG_INT,
+  RAP_OBJECT_TAG_FLOAT,
+  RAP_OBJECT_TAG_TEXT,
+  RAP_OBJECT_TAG_TUPLE,
+  RAP_OBJECT_TAG_SLICE,
+} RAP_ObjectTag;
+
+typedef struct {
+  RAP_ObjectTag tag;
+  union {
+    bool logical_val;
+    int64_t int_val;
+    double float_val;
+    struct RAP_Tuple *text_val;
+    struct RAP_Tuple *tuple_val;
+    struct RAP_Callable *callable_val;
+    struct RAP_Slice *slice_val;
+  };
+} RAP_Object;
+```
+
+Если интересно узнать глубже приглашаю по ссылке в репозиторий [см. Ссылки](#ссылки)
 
 ### Фаза 2 
 
