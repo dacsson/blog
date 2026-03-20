@@ -6,11 +6,11 @@ PANDOC_BASE := -M base="$(BASE)" --highlight-style=zenburn
 
 .PHONY: all clean serve
 
-all: public/index.html public/instruments.html $(POSTS_HTML) public/style.css
+all: static-files public/index.html public/instruments.html $(POSTS_HTML)
 
-public/style.css: static/style.css
-	@mkdir -p public
-	cp static/style.css public/style.css
+.PHONY: static-files
+static-files:
+	@cp -r static/. public/
 
 public/posts/%.html: src/posts/%.md $(TEMPLATE)
 	@mkdir -p public/posts
