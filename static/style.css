@@ -31,9 +31,68 @@ body {
   line-height: 1.6;
   color: var(--fg);
   background: var(--bg);
-  max-width: var(--max-w);
+  max-width: calc(var(--max-w) + 200px);
   margin: 0 auto;
   padding: 2rem 1rem;
+}
+
+.page {
+  display: flex;
+  gap: 2rem;
+}
+
+main {
+  max-width: var(--max-w);
+  min-width: 0;
+  flex: 1;
+}
+
+.toc {
+  width: 180px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 2rem;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.toc strong {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin-bottom: 0.3rem;
+}
+
+.toc .toc-h3 {
+  padding-left: 0.8rem;
+}
+
+.toc a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.toc a:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 900px) {
+  .toc {
+    display: none;
+  }
+
+  body {
+    max-width: var(--max-w);
+  }
 }
 
 a {

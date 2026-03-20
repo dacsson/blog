@@ -11,11 +11,16 @@
   <a href="$base$/">блог</a>
   <a href="$base$/instruments.html">инструменты</a>
 </nav>
-$if(date)$
-<h1>$title$</h1>
-<p class="post-meta">$date$</p>
-$endif$
-$body$
+<div class="page">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    $if(date)$
+    <h1>$title$</h1>
+    <p class="post-meta">$date$</p>
+    $endif$
+    $body$
+  </main>
+</div>
 <footer>
   safonoff
 </footer>
@@ -27,6 +32,27 @@ document.querySelectorAll("h1[id],h2[id],h3[id],h4[id]").forEach(h => {
   a.textContent = "#";
   h.appendChild(a);
 });
+
+const toc = document.getElementById("toc");
+const headings = document.querySelectorAll("main h2[id], main h3[id]");
+if (headings.length > 1) {
+  const title = document.createElement("strong");
+  title.textContent = "Оглавление";
+  toc.appendChild(title);
+  const ul = document.createElement("ul");
+  headings.forEach(h => {
+    const li = document.createElement("li");
+    li.className = h.tagName === "H3" ? "toc-h3" : "";
+    const a = document.createElement("a");
+    a.href = "#" + h.id;
+    a.textContent = h.childNodes[0].textContent;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  toc.appendChild(ul);
+} else {
+  toc.style.display = "none";
+}
 </script>
 </body>
 </html>
