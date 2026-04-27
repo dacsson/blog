@@ -14,7 +14,7 @@ title: Мои штуки
 <strong>рапира26</strong>
 <p>компилятор для потомка советского языка "Рапира", динамический, маленький и модернизированный</p>
 <p>
-<a href="https://gitflic.ru/project/artjom/rapira26">gitflic</a>
+<a href="https://github.com/dacsson/rapira26">github</a>
 </p>
 </div>
 </div>
