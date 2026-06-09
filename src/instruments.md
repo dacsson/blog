@@ -56,6 +56,17 @@ title: Мои штуки
 </div>
 </div>
 
+<div class="project">
+<img src="img/logo_elfbook.png" alt="Elfbook">
+<div>
+<strong>Elfbook</strong>
+<p>Обзорщик RISC-V бинарей с встроенным поиском по спецификации, Rust + Tauri</p>
+<p>
+<a href="https://github.com/dacsson/elfbook_riscv">github</a>
+</p>
+</div>
+</div>
+
 ## 2024
 
 <div class="project">
